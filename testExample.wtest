@@ -1,9 +1,36 @@
-import example.pepita
+import autos.*
 
-describe "group of tests for pepita" {
-
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
-  }
-
+describe "Autos de Dominic Toretto" {
+    test "Dominic compra autos y luego testea su velocidad"{
+        dominic.comprar(ferrari)
+        dominic.comprar(flecha)
+        dominic.comprar(intocable)
+        dominic.comprar(mcLaren)
+        dominic.hacerPruebaDeVelocidad()
+        assert.equals(176.25, dominic.promedioVelocidad())
+    }
+    test "Dominic compra autos y luego testea su velocidad para saber cual es el mas rapido"{
+        dominic.comprar(ferrari)
+        dominic.comprar(flecha)
+        dominic.comprar(intocable)
+        dominic.comprar(mcLaren)
+        dominic.hacerPruebaDeVelocidad()
+        assert.equals(mcLaren, dominic.masRapido())
+    }
+    test "Dominic testea sus autos para saber si hay uno que es muy rapido pero no lo encuentra"{
+        dominic.comprar(ferrari)
+        dominic.comprar(flecha)
+        dominic.comprar(intocable)
+        dominic.comprar(mcLaren)
+        dominic.hacerPruebaDeVelocidad()
+        assert.notThat(dominic.hayAutoMuyRapido())
+    }
+    test "Dominic se compra un Mc Laren y lo usa mucho luego lo lleva al taller para ponerlo en condiciones "{
+        dominic.comprar(mcLaren)
+        dominic.hacerPruebaDeVelocidad()
+        mcLaren.esConducidoKilometros(650)
+        dominic.mandarAutosAlTaller()
+        taller.repararAutos()
+        assert.that(mcLaren.enCondiciones())
+    }
 }
