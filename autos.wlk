@@ -61,7 +61,7 @@ object flecha {
 
     method enCondiciones() =  
         nivelCombustible > combustible.nivelMinimo()  and
-        color == rojo
+        color.esElAdecuado()
 
     method hacerPrueba (){
         nivelCombustible = (nivelCombustible - 5).max(0)
@@ -129,12 +129,15 @@ object nitrogeno {
 //Colores
 object azul {
     method cambiarDeColor() = rojo
+    method esElAdecuado() = false
 }
 
 object rojo {
      method cambiarDeColor() = azul
+     method esElAdecuado() = false
 }
 
 object verde {
      method cambiarDeColor() = rojo
+     method esElAdecuado() = true
 }
